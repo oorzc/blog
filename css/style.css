@@ -445,6 +445,10 @@ body {
   -webkit-transition: padding-left 0.8s ease-in-out;
   transition: padding-left 0.8s ease-in-out;
 }
+#main .top-header.fixed {
+  -webkit-box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.26);
+          box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.26);
+}
 #main h2 {
   height: 55px;
   line-height: 55px;
@@ -534,6 +538,7 @@ body {
 }
 .tag-list li {
   margin-right: 5px;
+  margin-bottom: 5px;
   float: left;
   text-align: center;
   font-size: 12px;
