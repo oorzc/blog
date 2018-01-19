@@ -90,10 +90,17 @@
 
 	//页面滚动时
 	w.addEventListener('scroll', function () {
-		var EloffsetTop = outils.getScrollTop();
+		var BarOffsetTop = outils.getScrollTop();
+		var headerTop = header.clientHeight;
+
+		if (BarOffsetTop > headerTop) {
+			header.classList.add('fixed');
+		}else{
+			header.classList.remove('fixed');
+		}
 
 		setTimeout(function () {
-			if (EloffsetTop < 600) {
+			if (BarOffsetTop < 600) {
 				gotop.classList.remove('in');
 
 			}else{
@@ -105,8 +112,7 @@
 
 	//页面缩放
 	w.addEventListener('resize', function () {
-
-
+		Blog.toggleMenu();
 	}, false);
 
 	//打开侧边栏

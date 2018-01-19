@@ -386,7 +386,7 @@ body {
 		}
 	}
 }
-
+/* 关闭按钮 */
 #menu-off{
 	position: absolute;
 	top: 0;
@@ -435,6 +435,15 @@ body {
 	padding-left: 240px;
 	min-height: 100%;
 	transition: .4s ease-in-out;
+	.header-title{
+		visibility: hidden;
+		height: 55px;
+		line-height: 55px;
+		font-weight: 600;
+		font-size: 18px;
+		padding-right: 15px;
+		text-align: center;
+	}
 	.top-header{
 		position: fixed;
 		top: 0;
@@ -448,17 +457,11 @@ body {
 		transition: padding-left .8s ease-in-out;
 		&.fixed{
 			box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.26);
+			.header-title {
+				visibility: visible;
+			}
 		}
 
-	}
-	h2{
-		// visibility: hidden;
-		height: 55px;
-		line-height: 55px;
-		font-weight: 600;
-		font-size: 18px;
-		padding-right: 15px;
-		text-align: center;
 	}
 	.header-icon{
 		width: 55px;
@@ -520,7 +523,6 @@ body {
 		}
 	}
 	#footer{
-		margin-left: -240px;
 		text-align: center;
 		color: #fff;
 		.footer-top{
@@ -540,10 +542,32 @@ body {
 		padding-left: 0px;
 	}
 }
+@media screen and (max-width: 640px) {
+	#header .header-title {
+		text-align: left;
+	}
+}
 
+/* 搜索框 */
+.search-warp{
+	position: relative;
+	#back{
+		display: none;
+	}
+	#key{
+		position: relative;
+		z-index: 2;
+		margin: 10px 10px 0 0;
+		border: none:
+		border-bottom: 2px solid #fff;
+		background: transparent;
+	}
+	#search{
 
+	}
+}
 
-
+/*标签*/
 .tag-list{
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -662,5 +686,13 @@ body {
 	&.in{
 		opacity: 1;
 		transform: translateX(0);
+	}
+}
+
+@media screen and (max-width: 640px) {
+	#gotop {
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
 	}
 }
