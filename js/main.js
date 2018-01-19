@@ -17,19 +17,6 @@
 	even = ('ontouchstart' in w && /Mobile|android|iOS|iPhone|iPad|Windows Phone|KEAPWI/i.test(navigator.userAgent)) ? 'touchstart' : 'click',
 	isWX = /micromessenger/i.test(navigator.userAgent),
 	noop = function () {},
-	offset = function (el) {
-		var x = el.offsetLeft,
-		y = el.offsetTop;
-		if (el.offsetParent) {
-			var pOfs = offset(el.offsetParent);
-			x += pOfs.x;
-			y += pOfs.y;
-		}
-		return {
-			x : x,
-			y : y
-		}
-	},
 	docEl = d.documentElement;
 	var Blog = {
 		//关闭显示侧边栏
