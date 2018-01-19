@@ -367,19 +367,6 @@ body {
   position: relative;
   height: 100%;
 }
-#menu .inner #menu-off {
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 55px;
-  height: 55px;
-  line-height: 55px;
-  text-align: center;
-  color: #fff;
-}
-#menu .inner #menu-off i {
-  font-size: 28px;
-}
 #menu .inner .user-info {
   /*个人信息*/
   padding: 35px 20px;
@@ -428,6 +415,21 @@ body {
 }
 #menu .inner .scroll-warp .nav li:hover a {
   color: #fff;
+}
+#menu-off {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  color: #fff;
+  -webkit-transition: 0.4s cubic-bezier(0.18, 0.81, 0.3, 0.89);
+  transition: 0.4s cubic-bezier(0.18, 0.81, 0.3, 0.89);
+}
+#menu-off i {
+  font-size: 28px;
 }
 #menu.hide + #main {
   padding-left: 0;
