@@ -74,9 +74,17 @@ a{text-decoration:none;cursor: pointer;}
 .al{text-align:left}
 .ac{text-align:center}
 .ar{text-align:right}
-.hide{display:none}
+.hidden{display:none}
 
 .clearfix::after{content:'';display:block;clear: both;}
+
+/* 锁定页面 禁止下拉 */
+.lock {
+	overflow: hidden;
+	max-height: 100%
+}
+
+
 
 /* 文字溢出隐藏 */
 .text-clip{
@@ -229,6 +237,7 @@ a{text-decoration:none;cursor: pointer;}
 	background: #d7dbf0
 }
 
+
 /* loading */
 #loading {
 	position: fixed;
@@ -237,12 +246,10 @@ a{text-decoration:none;cursor: pointer;}
 	z-index: 70;
 	width: 100%;
 	height: 3px;
-	background: #FF4081
-}
-
-#loading.active {
-	-webkit-animation: loading-anim 3s ease-in-out infinite;
-	animation: loading-anim 3s ease-in-out infinite
+	background: #FF4081;
+	&.active{
+		animation: loading-anim 1s ease-in-out infinite;
+	}
 }
 
 @-webkit-keyframes loading-anim {
@@ -317,7 +324,6 @@ body {
 
 /* menu */
 #menu {
-	display: none;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -392,6 +398,36 @@ body {
 				}
 			}
 		}
+	}
+}
+
+
+#menu.hide+#main {
+	padding-left: 0;
+}
+
+#menu.hide {
+	transform: translateX(-100%);
+}
+#menu.hide #menu-off{
+	transform: scale(0);
+}
+
+
+@media screen and (max-width: 1240px) {
+	#menu-off {
+		display:none;
+	}
+	#menu {
+		z-index: 99;
+		box-shadow: none;
+		transform: translateX(-100%);
+	}
+	#menu.show {
+		transform: translateX(0);
+	}
+	#main {
+		padding-left: 0;
 	}
 }
 
@@ -500,6 +536,15 @@ body {
 
 }
 
+@media screen and (max-width: 1240px) {
+	#main {
+		padding-left: 0px;
+	}
+}
+
+
+
+
 .tag-list{
 	margin-top: 10px;
 	margin-bottom: 5px;
@@ -577,11 +622,28 @@ body {
 		}
 	}
 }
-
+/* 遮罩层 */
+#mask{
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 88;
+	opacity: 0;
+	background: rgb(0, 0, 0);
+	pointer-events: none;
+	transition: .3s ease-in-out;
+	&.in{
+		opacity: 0.3;
+		visibility: visible;
+		pointer-events: auto;
+	}
+}
 
 /* 返回顶部 */
 #gotop {
-	display: none;
 	position: fixed;
 	right: 16px;
 	bottom: 30px;
@@ -591,8 +653,15 @@ body {
 	line-height: 56px;
 	text-align: center;
 	color: #fff;
+	opacity: 0;
 	font-size: 22px;
 	font-weight: 600;
 	background: #FF4081;
 	border-radius: 50%;
+	transition: .5s ease-in-out;
+	transform: translateX(200%);
+	&.in{
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
