@@ -20,7 +20,7 @@
 	docEl = d.documentElement;
 	var Blog = {
 		//关闭显示侧边栏
-		toggleMenu : function (flag) {
+		toggleMenu: function (flag) {
 			var main = query('#main');
 			if (flag) {
 				menu.classList.remove('hide');
@@ -37,7 +37,7 @@
 		},
 		//遮罩层
 		hideOnMask : [],
-		model :function (target) {
+		model: function (target) {
 			this._model = query(target);
 			this._off = this._model.querySelector('.close');
 
@@ -63,6 +63,31 @@
 			this._off && this._off.addEventListener(even,  self.hide());
 
 		},
+		//页面动画处理
+		page: (function () {
+			var elms = queryAll('.fade, .fade-scale');
+			return {
+				loaded: function () {
+					forEach.call(elms, function (el) {
+						el.classList.add('in');
+					})
+				},
+				unload: function () {
+					forEach.call(elms, function (el) {
+						el.classList.remove('in');
+					})
+				}
+
+			}
+
+		})(),
+		toggleSearch: function () {
+			var searchWarp = query('#search-warp');
+
+			searchWarp.classList.toggle('in');
+
+
+		},
 
 	}
 
@@ -71,9 +96,14 @@
 		// Blog.toggleMenu(true);
 		loading.classList.remove('active');
 		var top = docEl.scrollTop;
-
+		Blog.page.loaded();
+		Blog.page.search;
 	}, false);
 
+	//离开页面前
+	w.addEventListener('beforeunload', function () {
+		Blog.page.unload();
+	}, false);
 
 	//页面滚动时
 	w.addEventListener('scroll', function () {
@@ -114,21 +144,30 @@
 		e.preventDefault();
 	}, false);
 
+	//关闭遮罩
 	mask.addEventListener(even, function (e) {
 		Blog.toggleMenu();
 		e.preventDefault();
 	}, false);
-
-
 
 	//返回顶部
 	gotop.addEventListener('click', function () {
 		outils.scrollTo(0, 300);
 	}, false);
 
+	//点击搜索按钮
+	query('#search').addEventListener('click', function () {
+		Blog.toggleSearch();
+	}, false);
+
+	Blog.noop = noop;
+	Blog.even = even;
+	Blog.query = query;
+	Blog.queryAll = queryAll;
+
+	return  w.Blog = Blog;
 
 
-
-
+	console.log("%c 感谢你的来访！", "background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
 
 })(window,document);
