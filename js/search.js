@@ -93,6 +93,7 @@
 	function search(e) {
 		var key = this.value.trim();
 		if (!key) {
+			Control.hide();
 			return;
 		}
 		var regExp = new RegExp(key.replace(/[ ]/g, '|'), 'gmi');
