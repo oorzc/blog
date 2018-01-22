@@ -271,6 +271,11 @@ a {
 ::selection {
   background: #d7dbf0;
 }
+@media screen and (max-width: 720px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
 /* loading */
 #loading {
   position: fixed;
@@ -566,6 +571,9 @@ body {
 #main .article-list .article-list-item .article-title a {
   color: #3F51B5;
 }
+#main .article-list .article-list-item .article-content {
+  word-break: break-all;
+}
 #main .article-list .article-list-item .post-time {
   display: block;
   font-size: 12px;
@@ -607,7 +615,7 @@ body {
 #search-warp.in #search i {
   color: #C5CAE9;
 }
-#search-warp #back {
+#search-warp #search-back {
   display: none;
 }
 #search-warp .search-input {
@@ -618,6 +626,7 @@ body {
   margin: 10px 10px 0 0;
   border: none;
   border-bottom: 2px solid #fff;
+  color: #fff;
   background: transparent;
   -webkit-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
@@ -631,6 +640,66 @@ body {
   right: 0;
   z-index: 3;
 }
+/* 搜索面板 */
+.search-panel {
+  position: fixed;
+  top: 50px;
+  right: 65px;
+  z-index: 6;
+  width: 420px;
+  max-height: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 15px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 1px 15px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-50%) scale(0);
+          transform: translateY(-50%) scale(0);
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.search-panel.in {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: none;
+          transform: none;
+}
+.search-panel .search-result .item {
+  border-bottom: 1px solid #ccc;
+  line-height: 1.6em;
+  padding: 10px 20px;
+}
+.search-panel .search-result .item a .tags {
+  width: 70%;
+  color: #666;
+}
+.search-panel .search-result .item a .tags span {
+  margin-right: 5px;
+  font-size: 13px;
+}
+.search-panel .search-result .item a .time {
+  text-align: right;
+  font-size: 13px;
+  color: #727272;
+}
+.search-panel .search-result .item a:hover {
+  text-decoration: underline;
+}
+.search-panel .search-result .tips {
+  padding: 10px 20px;
+  text-align: center;
+  color: #666;
+}
+.search-panel .search-result .tips .iconfont {
+  padding: 10px 0;
+  display: inline-block;
+  font-size: 35px;
+}
+.search-panel .search-result .tips p {
+  font-size: 16px;
+}
 @media screen and (max-width: 1240px) {
   #main {
     padding-left: 0px;
@@ -641,7 +710,7 @@ body {
     text-align: left;
   }
   #search-warp.in {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     z-index: 10;
@@ -652,11 +721,19 @@ body {
   #search-warp.in .search-input {
     width: 100%;
   }
-  #search-warp.in #back {
+  #search-warp.in #search-back {
     display: block;
     position: absolute;
     top: 0;
     left: 0;
+  }
+  .search-panel {
+    padding-top: 56px;
+    top: 1px;
+    right: 0;
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
   }
 }
 /*标签*/

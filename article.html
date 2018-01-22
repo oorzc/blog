@@ -74,32 +74,32 @@
         <header id="header" class="top-header">
             <div class="flex-row">
                 <a class="header-icon" href="javascript:;" id="menu-open">
-                   <i class="iconfont icon-ego-menu"></i>
-               </a>
-               <!-- top标题 -->
-               <h2 class="header-title flex-col text-clip">
-                 xxxxxxxxxxxxxxxxxxxx
-             </h2>
-             <!-- 搜索框 -->
-             <div id="search-warp" class="search-warp">
-                <a class="header-icon" href="javascript:;" id="back">
-                    <i class="iconfont icon-backoff"></i>
-                </a>
-                <input type="text" id="key" class="search-input" name="" autocomplete="off" placeholder="输入感兴趣的关键字">
-                <a class="header-icon" href="javascript:;" id="search">
-                    <i class="iconfont icon-sousuo"></i>
-                </a>
-            </div>
-            <!-- 分享 -->
-            <a class="header-icon" href="" id="menuShare">
-              <i class="iconfont icon-msnui-sns"></i>
-          </a>
-      </div>
-  </header>
+                 <i class="iconfont icon-ego-menu"></i>
+             </a>
+             <!-- top标题 -->
+             <h2 class="header-title flex-col text-clip">
+               xxxxxxxxxxxxxxxxxxxx
+           </h2>
+           <!-- 搜索框 -->
+           <div id="search-warp" class="search-warp">
+            <a class="header-icon" href="javascript:;" id="search-back">
+                <i class="iconfont icon-backoff"></i>
+            </a>
+            <input type="text" id="key" class="search-input" name="" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a class="header-icon" href="javascript:;" id="search">
+                <i class="iconfont icon-sousuo"></i>
+            </a>
+        </div>
+        <!-- 分享 -->
+        <a class="header-icon" href="" id="menuShare">
+          <i class="iconfont icon-msnui-sns"></i>
+      </a>
+  </div>
+</header>
 
-  <header class="content-header"></header>
+<header class="content-header"></header>
 
-  <div id="article" class="warp">
+<div id="article" class="warp">
     <div class="article-detail">
         <h1 class="title">xxxxxxxxxxxxxx</h1>
         <h5 class="subtitle">22222222222</h5>
@@ -168,8 +168,30 @@
     <i class="iconfont icon-top"></i>
 </a>
 
+
+<!-- search-panel -->
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result">
+    </ul>
+</div>
+<template id="search-tpl">
+    <li class="item"><a href="{path}" class="waves-block waves-effect">
+        <div class="title text-clip" title="{title}">
+            {title}
+        </div>
+        <div class="flex-row flex-middle">
+            <div class="tags text-clip">
+                {tags}
+            </div>
+            <time class="flex-col time  text-clip">{date}</time>
+        </div>
+    </a></li>
+</template>
+
 <script type="text/javascript" src="js/outils.min.js"></script>
+<script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
 
 </body>
 </html>

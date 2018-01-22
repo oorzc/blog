@@ -1,13 +1,13 @@
-     ajax({
-     	type:'post',
-     	url:'xxx',
-     	data:{
-     		id:'111'
-     	},
-     	success:function(res){
-     		console.log(res)
-     	}
-     })
+     // ajax({
+     // 	type:'post',
+     // 	url:'xxx',
+     // 	data:{
+     // 		id:'111'
+     // 	},
+     // 	success:function(res){
+     // 		console.log(res)
+     // 	}
+     // })
     function ajax(obj) {
         obj = obj || {};
         obj.type = obj.type.toUpperCase() || 'POST';
