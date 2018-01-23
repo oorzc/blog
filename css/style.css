@@ -61,6 +61,9 @@ p {
 input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
+template {
+  display: none;
+}
 h1,
 h2,
 h3,
@@ -789,7 +792,7 @@ body {
   #main .content-header {
     min-height: auto;
     margin-left: 0;
-    padding: 65px 16px 20px;
+    padding: 65px 0px 20px;
   }
   #main .article-header .title {
     display: block;
@@ -874,6 +877,9 @@ body {
   }
   #main #article .article-detail .subtitle {
     display: none;
+  }
+  .content-header .warp {
+    padding: 0 20px;
   }
 }
 /*文章分享*/
@@ -1004,7 +1010,7 @@ body {
   z-index: 99;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 320px;
+  width: 440px;
   text-align: center;
   background: #fff;
   border-radius: 4px;
@@ -1046,6 +1052,14 @@ body {
 }
 #rewardModel .reward-items li img {
   width: 100%;
+}
+@media screen and (max-width: 640px) {
+  #rewardModel {
+    width: 320px;
+  }
+  #rewardModel .reward-title {
+    font-size: 14px;
+  }
 }
 /*标签*/
 .article-tag-list {
@@ -1172,10 +1186,81 @@ body {
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
+/* tab 标签 */
+.tabs-bar {
+  position: relative;
+  overflow: hidden;
+}
+.tabs-bar.in {
+  overflow: visible;
+  text-shadow: none;
+}
+.tabs-bar.in .tags-list {
+  margin-right: 0px;
+  position: absolute;
+  top: 20px;
+  z-index: 9;
+  background: #fff;
+  -webkit-box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.tabs-bar.in .tags-list .tags-list-item {
+  padding: 10px 20px;
+  color: #555;
+}
+.tabs-bar.in .tags-list-more {
+  top: -5px;
+}
+.tabs-bar .tags-list {
+  position: relative;
+  padding: 0;
+  margin-right: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tabs-bar .tags-list .tags-list-item {
+  padding: 10px 20px;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  color: #fff;
+}
+.tabs-bar .tags-list-more {
+  position: absolute;
+  top: 11px;
+  right: 0;
+  z-index: 9;
+}
+.tabs-bar .tags-list-more a {
+  display: inline-block;
+  padding: 0 15px;
+}
+.tabs-bar .tags-list-more a .iconfont {
+  font-size: 18px;
+  color: #fff;
+}
 @media screen and (max-width: 640px) {
   #gotop {
     width: 40px;
     height: 40px;
     line-height: 40px;
+  }
+  .tabs-bar .tags-list {
+    overflow-x: auto;
+  }
+  .tabs-bar .tags-list-more .iconfont {
+    font-size: 18px;
+    color: #fff;
   }
 }

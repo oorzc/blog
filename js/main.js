@@ -15,8 +15,7 @@
 	forEach = Array.prototype.forEach,
 	even = ('ontouchstart' in w && /Mobile|android|iOS|iPhone|iPad|Windows Phone|KEAPWI/i.test(navigator.userAgent)) ? 'touchstart' : 'click',
 	isWX = /micromessenger/i.test(navigator.userAgent),
-	noop = function () {},
-	docEl = d.documentElement;
+	noop = function () {};
 	var Blog = {
 		//关闭显示侧边栏
 		toggleMenu: function (flag) {
@@ -39,8 +38,6 @@
 		model: function (target) {
 			this._model = query(target);
 			this._off = this._model.querySelector('.close');
-			console.log(this._off);
-
 			var self = this;
 			this.show = function () {
 				mask.classList.add('in');
@@ -83,6 +80,9 @@
 			}
 
 		})(),
+		tabBar: function (el) {
+			el.parentNode.parentNode.classList.toggle('expand')
+		},
 		//分享
 		share: function () {
 			//顶部菜单分享
@@ -104,6 +104,7 @@
 				}, false)
 			}
 		},
+		//打赏
 		reward: function () {
 			var model = new this.model('#rewardModel');
 			query('#rewardBtn').addEventListener(even, model.toggle);
@@ -114,7 +115,6 @@
 	//页面加载完成后
 	w.addEventListener('load', function () {
 		loading.classList.remove('active');
-		var top = docEl.scrollTop;
 		Blog.page.loaded();
 	}, false);
 
@@ -175,6 +175,11 @@
 	gotop.addEventListener('click', function () {
 		outils.scrollTo(0, 300);
 	}, false);
+	var tabBar =  query('#tabBar');
+	var tabsWarp =  query('#tabsWarp');
+	tabBar && tabBar.addEventListener('click', function (e) {
+			tabsWarp.classList.toggle('in')
+	}, false);
 
 
 	if (w.BLOG.SHARE) {
@@ -186,6 +191,6 @@
 	}
 
 
-	console.log("%c 感谢你的来访！", "background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
+	console.log("%c  Copyright By 黑夜 感谢你的来访！", "background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
 
 })(window,document);
