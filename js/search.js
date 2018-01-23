@@ -3,7 +3,6 @@
 	var body = d.body,
 	query = d.querySelector.bind(d),
 	queryAll = d.querySelectorAll.bind(d),
-	root = query('html'),
 	searchBtn = query('#search'),
 	searchWrap = query('#search-warp'),
 	keyInput = query('#key'),
@@ -37,11 +36,11 @@
 
 	var Control = {
 		show: function () {
-			w.innerWidth < 760 ? root.classList.add('lock') : noop;
+			w.innerWidth < 760 ? body.classList.add('lock') : noop;
 			searchPanel.classList.add('in');
 		},
 		hide: function () {
-			w.innerWidth < 760 ? root.classList.remove('lock') : noop;
+			w.innerWidth < 760 ? body.classList.remove('lock') : noop;
 			searchPanel.classList.remove('in');
 		}
 	}
@@ -124,9 +123,9 @@
 	}, false);
 
 	d.addEventListener(even, function (e) {
-		console.log(e.target)
-		console.log(e.target.tagName )
-		console.log(e.target.id )
+		// console.log(e.target)
+		// console.log(e.target.tagName )
+		// console.log(e.target.id )
 		if (e.target.id !== 'key' && e.target.id !== 'search-panel' && e.target.tagName !== 'LI' && even === 'click') {
 			Control.hide();
 		}

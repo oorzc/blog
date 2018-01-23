@@ -91,19 +91,23 @@
             </a>
         </div>
         <!-- 分享 -->
-        <a class="header-icon" href="" id="menuShare">
+        <a class="header-icon" href="javascript:;" id="menuShare">
           <i class="iconfont icon-msnui-sns"></i>
       </a>
   </div>
 </header>
 
-<header class="content-header"></header>
+<header class="content-header article-header">
+    <div class="warp">
+        <h1 class="title fade-scale">xxxxxxxxxxxxxx</h1>
+        <h5 class="subtitle  fade-scale">22222222222</h5>
+    </div>
+</header>
 
-<div id="article" class="warp">
+<article id="article" class="warp fade">
     <div class="article-detail">
         <h1 class="title">xxxxxxxxxxxxxx</h1>
         <h5 class="subtitle">22222222222</h5>
-
         <p>bkjbkjsdbfsdmvcsdvmsmnvkm</p>
         <p>bkjbkjsdbfsdmvcsdvmsmnvkm</p>
         <p>bkjbkjsdbfsdmvcsdvmsmnvkm</p>
@@ -132,21 +136,89 @@
         <p>bkjbkjsdbfsdmvcsdvmsmnvkm</p>
         <p>bkjbkjsdbfsdmvcsdvmsmnvkm</p>
 
-        <div class="tag-list ">
-            <ul class="clearfix">
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
-                <li><a href="">vjhv</a></li>
+        <!-- 文章打赏 -->
+        <div class="article-reward">
+            <a href="javascript:;" class="article-reward-btn btn-glow" id="rewardBtn">赏</a>
+        </div>
+
+        <!-- 打赏model -->
+        <div id="rewardModel" class="page-modal reward-lay">
+            <a class="close" href="javascript:;"><i class="iconfont icon-guanbi"></i></a>
+            <h3 class="reward-title">
+                <i class="icon icon-quote-left"></i>
+                \（￣︶￣）/  嘘寒问暖，不如打笔巨款？
+                <i class="icon icon-quote-right"></i>
+            </h3>
+            <ul class="reward-items flex">
+                <li class="row-rol">
+                    <img src="img/avatar.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+                    <p>微信</p>
+                </li>
+                <li class="row-rol">
+                    <img src="img/avatar.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+                    <p>支付宝</p>
+                </li>
             </ul>
         </div>
+
+        <!-- 标签分类 -->
+        <div class="article-footer ">
+            <ul class="article-tag-list clearfix">
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+                <li class="article-tag-list-item"><a href="">vjhv</a></li>
+            </ul>
+
+            <!-- 文章分享 -->
+            <div class="article-share-warp">
+                <div class="article-share" id="article-share">
+                    <ul class="article-share-item">
+                        <li>
+                            <a href="javascript:;" class="qq">
+                                <i class="iconfont icon-qq"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="weixin">
+                                <i class="iconfont icon-weixin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="weibo">
+                                <i class="iconfont icon-weibo"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:;" id="pageShareBtn" class="pageShareBtn">
+                  <i class="iconfont icon-msnui-sns"></i>
+              </a>
+          </div>
+      </div>
+  </div>
+
+  <!-- 上下篇导航 -->
+  <nav class="article-nav flex-row">
+    <div class="prev flex-col">
+        <a href="" class="fade">
+            <div class="tips"><&nbsp;Prev</div>
+            <h4 class="text-clip post-title-link">sssssssssssssssssssssssssssssssssssss</h4>
+        </a>
     </div>
+    <div class="next flex-col">
+       <a href="" class="fade ar">
+        <div class="tips">Next&nbsp;></div>
+        <h4 class="text-clip post-title-link">ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss</h4>
+    </a>
 </div>
+</nav>
+</article>
 
 <footer id="footer">
     <div class="footer-top">
@@ -168,6 +240,29 @@
     <i class="iconfont icon-top"></i>
 </a>
 
+<!-- globalShare -->
+<div class="global-share" id="globalShare">
+    <ul class="flex-row">
+        <li class="flex-col">
+            <a href="javascript:;" class="qq">
+                <i class="iconfont icon-qq"></i>
+            </a>
+            <p>QQ</p>
+        </li>
+        <li class="flex-col">
+            <a href="javascript:;" class="weixin">
+                <i class="iconfont icon-weixin"></i>
+            </a>
+            <p>微信</p>
+        </li>
+        <li class="flex-col">
+            <a href="javascript:;" class="weibo">
+                <i class="iconfont icon-weibo"></i>
+            </a>
+            <p>微博</p>
+        </li>
+    </ul>
+</div>
 
 <!-- search-panel -->
 <div class="search-panel" id="search-panel">
@@ -188,6 +283,12 @@
     </a></li>
 </template>
 
+<script type="text/javascript">
+    var BLOG = {
+        SHARE: true,
+        REWARD: true,
+    }
+</script>
 <script type="text/javascript" src="js/outils.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/main.js"></script>

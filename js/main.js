@@ -3,7 +3,6 @@
 	var body = d.body,
 	query = d.querySelector.bind(d),
 	queryAll = d.querySelectorAll.bind(d),
-	root = query('html'),
 	menu = query('#menu'),
 	header = query('#header'),
 	mask = query('#mask'),
@@ -25,14 +24,14 @@
 			if (flag) {
 				menu.classList.remove('hide');
 				if (w.innerWidth < 1241 ) {
+					body.classList.add('lock');
 					menu.classList.add('show');
 					mask.classList.add('in');
-					root.classList.add('lock');
 				}
 			}else{
+				body.classList.remove('lock');
 				menu.classList.remove('show');
 				mask.classList.remove('in');
-				root.classList.remove('lock');
 			}
 		},
 		//遮罩层
@@ -40,6 +39,7 @@
 		model: function (target) {
 			this._model = query(target);
 			this._off = this._model.querySelector('.close');
+			console.log(this._off);
 
 			var self = this;
 			this.show = function () {
@@ -49,7 +49,9 @@
 					self._model.classList.add('in');
 				}, 20);
 			}
+			this.onHide = noop;
 			this.hide = function () {
+				self.onHide();
 				mask.classList.remove('in');
 				self._model.classList.remove('ready');
 				setTimeout(function () {
@@ -60,7 +62,7 @@
 				return self._model.classList.contains('in') ? self.hide() : self.show();
 			}
 			Blog.hideOnMask.push(this.hide);
-			this._off && this._off.addEventListener(even,  self.hide());
+			this._off && this._off.addEventListener(even, self.hide);
 
 		},
 		//页面动画处理
@@ -81,16 +83,39 @@
 			}
 
 		})(),
+		//分享
+		share: function () {
+			//顶部菜单分享
+			var menuShare = query('#menuShare');
+			var globalShare = query('#globalShare');
+			var shareModal = new this.model('#globalShare');
+			menuShare.addEventListener(even, shareModal.toggle);
+
+			//文章分享
+			var pageShareBtn = query('#pageShareBtn');
+			var articleShare = query('#article-share');
+			if (pageShareBtn) {
+				pageShareBtn.addEventListener(even, function (e) {
+					articleShare.classList.toggle('in');
+				}, false)
+
+				d.addEventListener(even, function (e) {
+					!pageShareBtn.contains(e.target) && articleShare.classList.remove('in');
+				}, false)
+			}
+		},
+		reward: function () {
+			var model = new this.model('#rewardModel');
+			query('#rewardBtn').addEventListener(even, model.toggle);
+		},
 
 	}
 
 	//页面加载完成后
 	w.addEventListener('load', function () {
-		// Blog.toggleMenu(true);
 		loading.classList.remove('active');
 		var top = docEl.scrollTop;
 		Blog.page.loaded();
-		Blog.page.search;
 	}, false);
 
 	//离开页面前
@@ -140,6 +165,9 @@
 	//关闭遮罩
 	mask.addEventListener(even, function (e) {
 		Blog.toggleMenu();
+		Blog.hideOnMask.forEach(function (hide) {
+			hide()
+		});
 		e.preventDefault();
 	}, false);
 
@@ -147,6 +175,15 @@
 	gotop.addEventListener('click', function () {
 		outils.scrollTo(0, 300);
 	}, false);
+
+
+	if (w.BLOG.SHARE) {
+		Blog.share();
+	}
+
+	if (w.BLOG.REWARD) {
+		Blog.reward();
+	}
 
 
 	console.log("%c 感谢你的来访！", "background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
