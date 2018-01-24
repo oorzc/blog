@@ -257,13 +257,13 @@ a{text-decoration:none;cursor: pointer;}
 }
 @keyframes glowing {
 	from {
-		box-shadow: 0 0 0 rgba(0,0,0,.1)
+		box-shadow: 0 0 0 rgba(255,0,0,.1)
 	}
 	50% {
-		box-shadow: 0 0 20px rgba(0,0,0,.5)
+		box-shadow: 0 0 20px rgba(255,0,0,.5)
 	}
 	to {
-		box-shadow: 0 0 0 rgba(0,0,0,.1)
+		box-shadow: 0 0 0 rgba(255,0,0,.1)
 	}
 }
 
@@ -469,6 +469,8 @@ body {
 	}
 	.header-icon{
 		width: 55px;
+		height: 55px;
+		line-height: 55px;
 		text-align: center;
 		i{
 			font-size: 25px;
@@ -479,7 +481,7 @@ body {
 	.content-header {
 		min-height: 210px;
 		margin-left: -240px;
-		padding: 104px 16px 48px 256px;
+		padding: 104px 16px 5px 256px;
 		color: #fff;
 		background: #3F51B5;
 		text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
@@ -528,14 +530,14 @@ body {
 		margin: 20px auto;
 		// 文章详情
 		.article-detail{
+			* {
+				word-break: break-all;
+			}
 			padding: 35px;
 			margin-top: -115px;
 			background: #fff;
 			border-radius: 10px;
 			box-shadow: 0 8px 14px 1px rgba(0, 0, 0, 0.3);;
-			.title{
-				word-break: break-all;
-			}
 		}
 		//文章打赏
 		.article-reward{
@@ -698,7 +700,7 @@ body {
 		.content-header {
 			min-height: auto;
 			margin-left: 0;
-			padding: 65px 0px 20px;
+			padding: 65px 0px 0px;
 		}
 		.article-header{
 			.title{
@@ -1098,25 +1100,39 @@ body {
 /* tab 标签 */
 .tabs-bar{
 	position: relative;
+	z-index: 3;
 	overflow: hidden;
-	&.in{
+	transition: .3s ease-in-out;
+	&.warp{
+		padding: 0;
+	}
+	&.ready{
 		overflow: visible;
-		text-shadow: none;
-		.tags-list{
-			margin-right: 0px;
-			position: absolute;
-			top: 20px;
-			z-index: 9;
-			background: #fff;
-			box-shadow: 0 0 14px 1px rgba(0,0,0,.3);
-			flex-wrap: wrap;
-			.tags-list-item{
-				padding: 10px 20px;
-				color: #555;
+		transform: scale(0);
+		transition: .2s ease-in-out;
+		&.in{
+			padding-top: 40px;
+			text-shadow: none;
+			transform: scale(1);
+			.tags-list{
+				padding: 20px;
+				margin-right: 0px;
+				position: absolute;
+				top: 40px;
+				z-index: 3;
+				background: #fff;
+				box-shadow: 0 0 14px 1px rgba(0,0,0,.3);
+				flex-wrap: wrap;
+				.tags-list-item{
+					margin: 2px 3px;
+					padding: 5px 15px;
+					color: #555;
+					&.active, &:hover{
+						color: #fff;
+						background:  #FF4081;
+					}
+				}
 			}
-		}
-		.tags-list-more{
-			top: -5px;
 		}
 	}
 	.tags-list{
@@ -1129,20 +1145,31 @@ body {
 		flex-wrap: nowrap;
 		white-space: nowrap;
 		overflow: hidden;
+		transition: 0.3s ease-in-out;
 		.tags-list-item{
+			position: relative;
 			padding: 10px 20px;
-			flex: none;
-			color: #fff;
+			flex: 1;
+			text-align: center;
+			color: rgba(255,255,255,.8);
+			transition:  .2s;
+			overflow: visible!important;
+			&:hover{
+				color: #fff;
+			}
+			&.active {
+				color: #fff;
+				border-bottom: 2px solid #FF4081;
+			}
 		}
 	}
 	.tags-list-more{
 		position: absolute;
-		top: 11px;
+		top: 0;
 		right: 0;
 		z-index: 9;
 		a{
 			display: inline-block;
-			padding: 0 15px;
 			.iconfont{
 				font-size: 18px;
 				color: #fff;
@@ -1165,8 +1192,6 @@ body {
 			}
 		}
 		.tags-list-more{
-			// margin-right: -5px;
-			// padding: 0 15px;
 			.iconfont{
 				font-size: 18px;
 				color: #fff;
@@ -1312,3 +1337,5 @@ body {
 //         display: none
 //     }
 // }
+
+
