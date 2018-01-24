@@ -942,6 +942,7 @@ body {
           transform-origin: center center;
   -webkit-transform: scale(0);
           transform: scale(0);
+  background: #fff;
 }
 .article-footer .article-share-warp .article-share .article-share-item li a.qq {
   color: #3D95D5;
@@ -1063,7 +1064,117 @@ body {
     font-size: 14px;
   }
 }
-/*标签*/
+/* 导航tab 标签 */
+.tabs-bar {
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+}
+.tabs-bar.fixed {
+  position: fixed;
+  top: 55px;
+  background: #3F51B5;
+}
+.tabs-bar.warp {
+  padding: 0;
+}
+.tabs-bar.ready {
+  overflow: visible;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+.tabs-bar.ready.in {
+  padding-top: 40px;
+  text-shadow: none;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.tabs-bar.ready.in .tags-list {
+  padding: 20px;
+  margin-right: 0px;
+  position: absolute;
+  top: 40px;
+  z-index: 3;
+  background: #fff;
+  -webkit-box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.tabs-bar.ready.in .tags-list .tags-list-item {
+  margin: 2px 3px;
+  padding: 5px 15px;
+  color: #555;
+}
+.tabs-bar.ready.in .tags-list .tags-list-item.active,
+.tabs-bar.ready.in .tags-list .tags-list-item:hover {
+  color: #fff;
+  background: #FF4081;
+}
+.tabs-bar .tags-list {
+  position: relative;
+  padding: 0;
+  margin-right: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.tabs-bar .tags-list .tags-list-item {
+  position: relative;
+  padding: 10px 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-transition: .2s;
+  transition: .2s;
+  overflow: visible!important;
+}
+.tabs-bar .tags-list .tags-list-item:hover {
+  color: #fff;
+}
+.tabs-bar .tags-list .tags-list-item.active {
+  color: #fff;
+  border-bottom: 2px solid #FF4081;
+}
+.tabs-bar .tags-list-more {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9;
+}
+.tabs-bar .tags-list-more a {
+  display: inline-block;
+}
+.tabs-bar .tags-list-more a .iconfont {
+  font-size: 18px;
+  color: #fff;
+}
+@media screen and (max-width: 640px) {
+  #gotop {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .tabs-bar .tags-list {
+    overflow-x: auto;
+  }
+  .tabs-bar .tags-list-more .iconfont {
+    font-size: 18px;
+    color: #fff;
+  }
+}
+/*文章标签*/
 .article-tag-list {
   margin-top: 10px;
   margin-bottom: 5px;
@@ -1166,7 +1277,7 @@ body {
   position: fixed;
   right: 16px;
   bottom: 30px;
-  z-index: 1;
+  z-index: 10;
   cursor: pointer;
   width: 56px;
   height: 56px;
@@ -1187,114 +1298,4 @@ body {
   opacity: 1;
   -webkit-transform: translateX(0);
           transform: translateX(0);
-}
-/* tab 标签 */
-.tabs-bar {
-  position: relative;
-  z-index: 3;
-  overflow: hidden;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-.tabs-bar.warp {
-  padding: 0;
-}
-.tabs-bar.ready {
-  overflow: visible;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  -webkit-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-.tabs-bar.ready.in {
-  padding-top: 40px;
-  text-shadow: none;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-.tabs-bar.ready.in .tags-list {
-  padding: 20px;
-  margin-right: 0px;
-  position: absolute;
-  top: 40px;
-  z-index: 3;
-  background: #fff;
-  -webkit-box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 14px 1px rgba(0, 0, 0, 0.3);
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.tabs-bar.ready.in .tags-list .tags-list-item {
-  margin: 2px 3px;
-  padding: 5px 15px;
-  color: #555;
-}
-.tabs-bar.ready.in .tags-list .tags-list-item.active,
-.tabs-bar.ready.in .tags-list .tags-list-item:hover {
-  color: #fff;
-  background: #FF4081;
-}
-.tabs-bar .tags-list {
-  position: relative;
-  padding: 0;
-  margin-right: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow: hidden;
-  -webkit-transition: 0.3s ease-in-out;
-  transition: 0.3s ease-in-out;
-}
-.tabs-bar .tags-list .tags-list-item {
-  position: relative;
-  padding: 10px 20px;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.8);
-  -webkit-transition: .2s;
-  transition: .2s;
-  overflow: visible!important;
-}
-.tabs-bar .tags-list .tags-list-item:hover {
-  color: #fff;
-}
-.tabs-bar .tags-list .tags-list-item.active {
-  color: #fff;
-  border-bottom: 2px solid #FF4081;
-}
-.tabs-bar .tags-list-more {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 9;
-}
-.tabs-bar .tags-list-more a {
-  display: inline-block;
-}
-.tabs-bar .tags-list-more a .iconfont {
-  font-size: 18px;
-  color: #fff;
-}
-@media screen and (max-width: 640px) {
-  #gotop {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-  }
-  .tabs-bar .tags-list {
-    overflow-x: auto;
-  }
-  .tabs-bar .tags-list-more .iconfont {
-    font-size: 18px;
-    color: #fff;
-  }
 }

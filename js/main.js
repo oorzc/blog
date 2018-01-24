@@ -23,16 +23,20 @@
 			if (flag) {
 				menu.classList.remove('hide');
 				if (w.innerWidth < 1241 ) {
-					body.classList.add('lock');
+					// body.classList.add('lock');
+					query('html').classList.add('lock');
 					menu.classList.add('show');
 					mask.classList.add('in');
 				}
 			}else{
-				body.classList.remove('lock');
-				menu.classList.remove('show');
-				mask.classList.remove('in');
-			}
-		},
+					// body.classList.remove('lock');
+					query('html').classList.remove('lock');
+					menu.classList.remove('show');
+					mask.classList.remove('in');
+				}
+
+
+			},
 		//遮罩层
 		hideOnMask : [],
 		model: function (target) {
@@ -82,9 +86,9 @@
 		})(),
 		//标签切换
 		tabBar: function () {
-			var tabBar =  query('#tabBar');
+			var tabMore =  query('#tabMore');
 			var tabsWarp =  query('#tabsWarp');
-			tabBar && tabBar.addEventListener('click', function (e) {
+			tabMore && tabMore.addEventListener('click', function (e) {
 				tabsWarp.classList.toggle('ready');
 				setTimeout(function () {
 					tabsWarp.classList.toggle('in');
@@ -93,7 +97,43 @@
 
 			d.addEventListener('click', function (e) {
 				!tabsWarp.contains(e.target) && tabsWarp.classList.remove("ready", "in");
-			}, false)
+			}, false);
+		},
+		//固定导航标签
+		fixedTabBar: function (flag) {
+			//滚动条滚动距离
+			var BarOffsetTop = outils.getScrollTop();
+			//顶部导航高度
+			var headerTop = header.clientHeight;
+			var tabsWarp = query('#tabsWarp');
+			var bb = query('.article-list');
+			var b= outils.getScrollTop(tabsWarp);
+			var c = tabsWarp.offsetTop;
+
+			var tabScrollTop = c - headerTop;
+			// console.log(tabScrollTop);
+			// console.log(c-headerTop);
+			console.log(bb.offsetLeft);
+
+
+
+			if (BarOffsetTop > tabScrollTop) {
+				tabsWarp.classList.add('fixed');
+				if (w.innerWidth < 1241 ) {
+					tabsWarp.style.left  = 0;
+					tabsWarp.style.width  = '100%';
+				}else{
+					tabsWarp.style.left = bb.offsetLeft+'px';
+
+				}
+			}else{
+				tabsWarp.style.left  = 0;
+				tabsWarp.classList.remove('fixed');
+			}
+
+
+
+
 		},
 		//分享
 		share: function () {
@@ -109,11 +149,11 @@
 			if (pageShareBtn) {
 				pageShareBtn.addEventListener(even, function (e) {
 					articleShare.classList.toggle('in');
-				}, false)
+				}, false);
 
 				d.addEventListener(even, function (e) {
 					!pageShareBtn.contains(e.target) && articleShare.classList.remove('in');
-				}, false)
+				}, false);
 			}
 		},
 		//打赏
@@ -137,8 +177,21 @@
 
 	//页面滚动时
 	w.addEventListener('scroll', function () {
+		//滚动条滚动距离
 		var BarOffsetTop = outils.getScrollTop();
+		//顶部导航高度
 		var headerTop = header.clientHeight;
+		var tabsWarp = query('#tabsWarp');
+		var bb = query('.article-list');
+		var b= outils.getScrollTop(tabsWarp);
+		var c = tabsWarp.offsetTop;
+
+		var tabScrollTop = c - headerTop;
+		// console.log(tabScrollTop);
+		// console.log(c-headerTop);
+		// console.log(bb.offsetLeft);
+		// console.log(BarOffsetTop);
+
 
 		if (BarOffsetTop > headerTop) {
 			header.classList.add('fixed');
@@ -146,6 +199,9 @@
 			header.classList.remove('fixed');
 		}
 
+		Blog.fixedTabBar();
+
+		//显示隐藏滚动条
 		setTimeout(function () {
 			if (BarOffsetTop < 600) {
 				gotop.classList.remove('in');
@@ -207,7 +263,7 @@
 		Waves.attach('.waves-btn', ['waves-light', 'waves-button', 'waves-effect']);
 		Waves.attach('.waves-circle-btn', ['waves-light', 'waves-circle', 'waves-effect']);
 	} else {
-		console.error('Waves loading failed.')
+		console.error('Waves loading failed.');
 	}
 
 	console.log("%c  Copyright By 黑夜 感谢你的来访！", "background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
