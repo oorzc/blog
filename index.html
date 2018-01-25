@@ -85,14 +85,14 @@
         <header id="header" class="top-header">
             <div class="flex-row">
                 <a class="header-icon waves-circle-btn" href="javascript:;" id="menu-open">
-                   <i class="iconfont icon-ego-menu"></i>
-               </a>
-               <!-- top标题 -->
-               <h2 class="header-title flex-col text-clip">
-                   xxxxxxxxxxxxxxxxxxxx
-               </h2>
-               <!-- 搜索框 -->
-               <div id="search-warp" class="search-warp">
+                 <i class="iconfont icon-ego-menu"></i>
+             </a>
+             <!-- top标题 -->
+             <h2 class="header-title flex-col text-clip">
+                 xxxxxxxxxxxxxxxxxxxx
+             </h2>
+             <!-- 搜索框 -->
+             <div id="search-warp" class="search-warp">
                 <a class="header-icon waves-circle-btn" href="javascript:;" id="search-back">
                     <i class="iconfont icon-backoff"></i>
                 </a>
@@ -473,7 +473,7 @@
             <p>QQ</p>
         </li>
         <li class="flex-col">
-            <a href="javascript:;" class="weixin">
+            <a href="javascript:;" class="weixin wxShareBtn">
                 <i class="iconfont icon-weixin"></i>
             </a>
             <p>微信</p>
@@ -485,6 +485,13 @@
             <p>微博</p>
         </li>
     </ul>
+</div>
+
+<!-- wx share -->
+<div class="wxShareWarp" id="wxShareWarp">
+    <a class="close" href="javascript:;"><i class="iconfont icon-guanbi"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div id="qrcode"></div>
 </div>
 
 <!-- search-panel -->
@@ -512,6 +519,7 @@
         REWARD: false,
     }
 </script>
+<script type="text/javascript" src="js/qrcode.js"></script>
 <script type="text/javascript" src="js/waves.min.js"></script>
 <script type="text/javascript" src="js/outils.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>

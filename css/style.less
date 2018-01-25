@@ -1179,6 +1179,51 @@ body {
 	}
 }
 
+.wxShareWarp{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 99;
+	padding: 20px 10px;
+	width: 260px;
+	text-align: center;
+	background: #fff;
+	opacity: 0;
+	visibility: hidden;
+	box-shadow: 0 0 4px rgba(0,0,0,.3);
+	transform: translate(-50%, -150%);
+	transition: .3s ease-in-out;
+	&.in{
+		visibility: visible;
+		opacity: 1;
+		transform: translate(-50%, -50%);
+		p{
+			line-height: 25px;
+			color: #000;
+			text-shadow: none;
+		}
+	}
+	.close{
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 5px;
+		z-index: 3;
+		.iconfont{
+			font-size: 25px;
+			color: #666;
+		}
+	}
+	#qrcode{
+		padding: 10px 20px;
+		img{
+			width: 100%;
+		}
+	}
+
+
+}
+
 /* 返回顶部 */
 #gotop {
 	position: fixed;

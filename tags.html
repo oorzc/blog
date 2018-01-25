@@ -504,7 +504,7 @@
             <p>QQ</p>
         </li>
         <li class="flex-col">
-            <a href="javascript:;" class="weixin">
+            <a href="javascript:;" class="weixin wxShareBtn">
                 <i class="iconfont icon-weixin"></i>
             </a>
             <p>微信</p>
@@ -516,6 +516,13 @@
             <p>微博</p>
         </li>
     </ul>
+</div>
+
+<!-- wx share -->
+<div class="wxShareWarp" id="wxShareWarp">
+    <a class="close" href="javascript:;"><i class="iconfont icon-guanbi"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div id="qrcode"></div>
 </div>
 
 <!-- search-panel -->
@@ -544,6 +551,7 @@
         TABBAR: true,
     }
 </script>
+<script type="text/javascript" src="js/qrcode.js"></script>
 <script type="text/javascript" src="js/waves.min.js"></script>
 <script type="text/javascript" src="js/outils.min.js"></script>
 <script type="text/javascript" src="js/ajax.js"></script>

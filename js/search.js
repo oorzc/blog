@@ -96,9 +96,8 @@
 			return;
 		}
 		var regExp = new RegExp(key.replace(/[ ]/g, '|'), 'gmi');
-		loadData(function (data) {
-			var data = JSON.parse(data);
-			// console.log(Object.prototype.toString.call(data));
+		loadData(function (result) {
+			var data = JSON.parse(result);
 			var result = data.filter(function (post) {
 				return matcher(post, regExp);
 			});
@@ -123,9 +122,6 @@
 	}, false);
 
 	d.addEventListener(even, function (e) {
-		// console.log(e.target)
-		// console.log(e.target.tagName )
-		// console.log(e.target.id )
 		if (e.target.id !== 'key' && e.target.id !== 'search-panel' && e.target.tagName !== 'LI' && even === 'click') {
 			Control.hide();
 		}
