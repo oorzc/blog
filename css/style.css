@@ -1161,11 +1161,6 @@ body {
   color: #fff;
 }
 @media screen and (max-width: 640px) {
-  #gotop {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-  }
   .tabs-bar .tags-list {
     overflow-x: auto;
   }
@@ -1344,4 +1339,11 @@ body {
   opacity: 1;
   -webkit-transform: translateX(0);
           transform: translateX(0);
+}
+@media screen and (max-width: 640px) {
+  #gotop {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
 }

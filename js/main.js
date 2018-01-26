@@ -35,8 +35,9 @@
 				mask.classList.remove('in');
 			}
 		},
-		//遮罩层
+
 		hideOnMask : [],
+		//遮罩层
 		model: function (target) {
 			this._model = query(target);
 			this._off = this._model.querySelector('.close');
