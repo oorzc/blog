@@ -4,6 +4,7 @@
 	query = d.querySelector.bind(d),
 	queryAll = d.querySelectorAll.bind(d),
 	searchBtn = query('#search'),
+	contentBox = query('#contentBox'),
 	searchWrap = query('#search-warp'),
 	keyInput = query('#key'),
 	searchBack = query('#search-back'),
@@ -110,6 +111,8 @@
 	//点击搜索按钮, 显示隐藏搜索框
 	searchBtn.addEventListener('click', function () {
 		searchWrap.classList.toggle('in');
+		contentBox.classList.toggle('hide');
+		query('html').classList.toggle('lock');
 		keyInput.value = '';
 		searchWrap.classList.contains('in') ? keyInput.focus() : keyInput.blur();
 		Control.hide();
@@ -118,6 +121,8 @@
 	//返回按钮
 	searchBack.addEventListener(even, function () {
 		searchWrap.classList.remove('in');
+		contentBox.classList.remove('hide');
+		query('html').classList.remove('lock');
 		Control.hide();
 	}, false);
 

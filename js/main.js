@@ -98,7 +98,7 @@
 			}, false);
 		},
 		//固定导航标签
-		fixedTabBar: function (flag) {
+		fixedTabBar: function (top) {
 			//滚动条滚动距离
 			var BarOffsetTop = outils.getScrollTop();
 			if (!tabsWarp) {
@@ -109,7 +109,7 @@
 			//导航标签到头部的距离
 			var tabScrollTop = tabsWarp.offsetTop - header.offsetTop;
 
-			if (BarOffsetTop > tabScrollTop) {
+			if (top > tabScrollTop) {
 				tabsWarp.classList.add('fixed');
 				if (w.innerWidth < 960 ) {
 					tabsWarp.style.left  = 0;
@@ -150,6 +150,7 @@
 			var wxShareBtn = queryAll('.wxShareBtn');
 			var wxShareModel = new this.model('#wxShareWarp');
 			wxShareModel.onHide = shareModal.hide;
+
 			// wxShareBtn.forEach( function(element, index) {
 			// 	element.addEventListener(even, wxShareModel.toggle)
 			// });
@@ -192,7 +193,7 @@
 		}
 
 		//导航栏处理
-		Blog.fixedTabBar();
+		Blog.fixedTabBar(BarOffsetTop);
 
 		//显示隐藏滚动条
 		setTimeout(function () {
@@ -277,7 +278,7 @@
 		height : 250
 	});
 	qrcode.makeCode(window.location.href);
-	return w.Blog = Blog;
+
 	console.log("%c  Copyright By 黑夜 感谢你的来访！", "background-image:-webkit-gradient( linear, left top,right top, color-stop(0, #00a419),color-stop(0.15, #f44336), color-stop(0.29, #ff4300),color-stop(0.3, #AA00FF),color-stop(0.4, #8BC34A), color-stop(0.45, #607D8B),color-stop(0.6, #4096EE), color-stop(0.75, #D50000),color-stop(0.9, #4096EE), color-stop(1, #FF1A00));color:transparent;-webkit-background-clip:text;font-size:13px;");
 
 })(window,document);
