@@ -111,7 +111,7 @@
 	//点击搜索按钮, 显示隐藏搜索框
 	searchBtn.addEventListener('click', function () {
 		searchWrap.classList.toggle('in');
-		contentBox.classList.toggle('hide');
+		contentBox && contentBox.classList.toggle('hide');
 		query('html').classList.toggle('lock');
 		keyInput.value = '';
 		searchWrap.classList.contains('in') ? keyInput.focus() : keyInput.blur();
@@ -121,7 +121,7 @@
 	//返回按钮
 	searchBack.addEventListener(even, function () {
 		searchWrap.classList.remove('in');
-		contentBox.classList.remove('hide');
+		contentBox && contentBox.classList.remove('hide');
 		query('html').classList.remove('lock');
 		Control.hide();
 	}, false);
@@ -134,7 +134,5 @@
 
 	keyInput.addEventListener('input', search);
 	keyInput.addEventListener(even, search);
-
-
 
 })(window,document);
