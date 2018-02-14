@@ -259,7 +259,9 @@
 	if (w.Waves) {
 		Waves.init();
 		Waves.attach('.waves-btn', ['waves-light', 'waves-button', 'waves-effect']);
+		Waves.attach('.waves-dark-btn', ['waves-effect','waves-block']);
 		Waves.attach('.waves-circle-btn', ['waves-light', 'waves-circle', 'waves-effect']);
+		Waves.attach('.waves-dark-circle-btn', ['waves-circle', 'waves-effect']);
 	} else {
 		console.error('Waves loading failed.');
 	}
